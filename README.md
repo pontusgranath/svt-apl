@@ -1,2 +1,2 @@
 # svt-apl
-TE4 SVT Praktik Repo
+Our [Trello Board](https://trello.com/b/xFy6a5f9/svt-apl)
