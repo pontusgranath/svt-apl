@@ -49,7 +49,7 @@ pip install virtualenv
 ```
 virtualenv venv
 ```
-3. Once finished you should now have created a virtual envionment.
+3. Once finished you should now have created a virtual environment.
 
 ### Starting the virtual environment
 1. Open a **command prompt** in the repository directory.
@@ -76,7 +76,7 @@ pip install -r requirements.txt
 4. Once all installations are done you're finished.
 
 ## Creating a Jupyter Notebook
-Before proceeding make sure you've followed the steps in [**Creating a virtual environment**](#Creating a virtual environment)
+Before proceeding make sure you've followed the steps in [**Creating a virtual environment**](#Creating-a-virtual-environment)
 
 1. Open a **command prompt** in the repository directory.
 2. Start your virtual environment.
