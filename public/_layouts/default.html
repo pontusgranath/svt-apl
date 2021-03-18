@@ -3,21 +3,20 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Titel</title>
+		<title>Searchbar</title>
 		<link rel="stylesheet" href="styles/bootstrap.min.css">
 		<link rel="stylesheet" href="styles/style.css">
 	</head>
 	<body>
-		<h1 class="text-center display-2 mt-2">SVT-APL Searchbar for statistical analysis stuff</h1>
+		<h1 class="text-center display-2 my-4">SVT-<span>APL</span> Searchbar for statistical analysis stuff</h1>
 		<div class="container d-flex justify-content-center align-items-center my-5">
-			<form action="#" id="search-form">
-				<div class="form-group">
-					<input class="form-control-lg" type="text" placeholder="Search here" id="search-bar">
-					<input class="form-control-lg" type="submit" value="Search">
-				</div>
+			<form action="#" id="search-form" class="d-flex justify-content-center">
+				<input id="search-bar" class="form-control-lg" type="text" placeholder="Search here" id="search-bar">
+				<button id="search-button" class="form-control-lg" type="submit"><i class="fas fa-search"></i></button>
 			</form>
 		</div>
 
+		<script src="https://kit.fontawesome.com/ee2129c6a0.js" crossorigin="anonymous"></script>
 		<script src="scripts/jquery-3.6.0.min.js"></script>
 		<script src="scripts/bootstrap.min.js"></script>
 		<script src="scripts/main.js"></script>
