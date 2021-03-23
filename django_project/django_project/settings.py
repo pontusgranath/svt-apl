@@ -25,7 +25,7 @@ ALLOWED_HOSTS = ['localhost']
 # Application definition
 
 INSTALLED_APPS = [
-    'static_precompiler',
+    'sass_processor',
     'dist_search.apps.DistSearchConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -116,10 +116,11 @@ USE_TZ = True
 
 STATIC_ROOT = os.path.join(BASE_DIR / 'staticfiles')
 STATIC_URL = "/static/"
+SASS_PROCESSOR_ROOT = STATIC_ROOT
 
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
     # other finders..
-    'static_precompiler.finders.StaticPrecompilerFinder',
+    'sass_processor.finders.CssFinder',
 )

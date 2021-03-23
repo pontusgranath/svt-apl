@@ -1,4 +1,4 @@
-{% load compile_static %}
+{% load sass_tags %}
 {% load static %}
 
 <!DOCTYPE html>
@@ -8,7 +8,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Searchbar</title>
 		<link rel="stylesheet" href="{% static "dist_search/styles/bootstrap.min.css" %}">
-		<link rel="stylesheet" href="{% static "dist_search/styles/style.sass"|compile %}">
+		<link rel="stylesheet" href="{% sass_src "dist_search/styles/style.sass" %}">
 	</head>
 	<body>
 		<h1 class="text-center display-2 my-4">SVT-<span>APL</span> Searchbar for statistical analysis stuff</h1>
