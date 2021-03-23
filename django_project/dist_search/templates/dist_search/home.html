@@ -13,8 +13,9 @@
 	<body>
 		<h1 class="text-center display-2 my-4">SVT-<span>APL</span> Searchbar for statistical analysis stuff</h1>
 		<div class="container d-flex justify-content-center align-items-center my-5">
-			<form action="#" id="search-form" class="d-flex justify-content-center">
-				<input list="shows" id="search-bar" class="form-control-lg" placeholder="Search here" id="search-bar">
+			<form action="calculate_distance" id="search-form" class="d-flex justify-content-center">
+				{% csrf_token %}
+				<input list="shows" name="search-title" id="search-bar" class="form-control-lg" placeholder="Search here" id="search-bar">
 				<button id="search-button" class="form-control-lg" type="submit"><i class="fas fa-search"></i></button>
 			</form>
 		</div>
@@ -26,6 +27,10 @@
 
             {% endfor %}
 		</datalist>
+
+		<ul id="search-results">
+			
+		</ul>
 		
 		<script src="https://kit.fontawesome.com/ee2129c6a0.js" crossorigin="anonymous"></script>
 		<script src="{% static 'dist_search/scripts/jquery-3.6.0.min.js' %}"></script>
