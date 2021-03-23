@@ -20,7 +20,11 @@
 		</div>
 
 		<datalist id="shows">
-			
+			{% for show_title in columns %}
+
+                <option value="{{show_title}}"></option>
+
+            {% endfor %}
 		</datalist>
 		
 		<script src="https://kit.fontawesome.com/ee2129c6a0.js" crossorigin="anonymous"></script>
