@@ -7,4 +7,6 @@ def home(request):
 
     columns = list(data.columns)
 
-    return render(request, 'dist_search/home.html')
+    c = {'columns': columns}
+
+    return render(request, 'dist_search/home.html', c)
