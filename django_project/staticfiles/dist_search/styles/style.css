@@ -38,6 +38,11 @@ h1 {
 #search-results {
   color: white;
   list-style: none; }
+  #search-results h2 {
+    text-decoration: underline;
+    text-decoration-thickness: 2.5px; }
+  #search-results span {
+    color: #00c800; }
   #search-results li {
     list-style: none; }
     #search-results li span {

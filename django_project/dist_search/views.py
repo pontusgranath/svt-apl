@@ -19,13 +19,14 @@ def calculate_distance(request):
         return res[columns.index(t1), columns.index(t2)]
 
     search = request.POST.get('search-title')
-    dataframe = pd.DataFrame([(c, distance(search,c)) for c in columns], columns=['title', 'distance']) 
+    dataframe = pd.DataFrame([(c, distance(search, c)) for c in columns], columns=['title', 'distance'])
 
     sorted_values = dataframe.sort_values('distance')
 
     to_list = sorted_values.values.tolist()
 
     context = {
+        'search': search,
         'to_list': to_list,
         'columns': columns
     }
