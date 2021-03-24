@@ -11,21 +11,24 @@ def calculate_distance(request):
     pd.set_option('display.max_columns', None)
     pd.set_option('display.max_rows', None)
 
-    m = np.matrix(data)
+    matrix = np.matrix(data)
     columns = list(data.columns)
-    res = squareform(pdist(m, 'hamming'))
+    res = squareform(pdist(matrix, 'hamming'))
 
     def distance(t1, t2):
         return res[columns.index(t1), columns.index(t2)]
 
     search = request.POST.get('search-title')
-    d = pd.DataFrame([(c, distance(search,c)) for c in columns], columns=['title', 'distance']) 
+    dataframe = pd.DataFrame([(c, distance(search,c)) for c in columns], columns=['title', 'distance']) 
 
-    sorted_values = d.sort_values('distance')
+    sorted_values = dataframe.sort_values('distance')
 
     to_list = sorted_values.values.tolist()
 
-    context = {'to_list': to_list}
+    context = {
+        'to_list': to_list,
+        'columns': columns
+    }
 
     return render(request, 'dist_search/home.html', context)
 

@@ -29,10 +29,10 @@
 		</datalist>
 
 		<ul id="search-results">
-			{% for t in to_list %}
+			{% for list_title in to_list %}
 
-				<li>{{t.0}}</li>
-				<li>{{t.1}}</li>
+				<li>{{list_title.0}}</li>
+				<li>{{list_title.1}}</li>
 
             {% endfor %}
 		</ul>
