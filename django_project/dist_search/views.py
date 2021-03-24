@@ -21,7 +21,7 @@ def calculate_distance(request):
     search = request.POST.get('search-title')
     dataframe = pd.DataFrame([(c, distance(search, c)) for c in columns], columns=['title', 'distance'])
 
-    sorted_values = dataframe.sort_values('distance')
+    sorted_values = dataframe.sort_values('distance')[:6]
 
     to_list = sorted_values.values.tolist()
 
