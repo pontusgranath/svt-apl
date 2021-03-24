@@ -11,6 +11,11 @@
 		<link rel="stylesheet" href="{% sass_src "dist_search/styles/style.sass" %}">
 	</head>
 	<body>
+		<noscript>
+			<style>
+				#distance-button { display:none; }
+			</style>
+		</noscript>
 		<h1 class="text-center display-2 my-4">SVT-<span>APL</span> Searchbar for statistical analysis stuff</h1>
 		<div class="container d-flex justify-content-center align-items-center my-5">
 			<form action="calculate_distance" id="search-form" class="d-flex justify-content-center" method="POST">
@@ -29,11 +34,16 @@
 		</datalist>
 
 		<div class="container d-flex justify-content-center">
-			<button id="distance-button" class="button m-auto">Display distance</button>
 		</div>
 		<ul id="search-results" class="container">
-			<h2 class="display-4">Search results for: <span>{{search}}<span></h2>
+
 			{% for list_title in to_list|slice:"1:" %}
+				{% if forloop.first %}
+					<div class="container d-flex justify-content-between align-items-center">
+						<h2 class="display-4">Search results for: <span>{{search}}<span></h2>
+						<button id="distance-button" class="button p-2">Display distance</button>
+					</div>
+				{% endif %}
 
 				<li class="list-title display-5 p-2">{{list_title.0}}<span class="distance-measurement"> - {{list_title.1}}</span></li>
 

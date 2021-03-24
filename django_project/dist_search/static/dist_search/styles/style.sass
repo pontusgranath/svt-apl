@@ -51,17 +51,20 @@ h1
     border-radius: 0
 
 #distance-button
-    margin: auto
+    margin: none
     border: none
     outline: none
 
-    min-width: 9rem
+    min-width: 9.5rem
 
-    padding: 12px
     border-radius: $search-bar-radius
 
     &:active
-        outline: 2px solid $svt-green
+        border: $search-bar-border-width solid $svt-green
+        
+    &.activated
+        border: $search-bar-border-width solid $svt-green
+
 
 #search-results
     color: white

@@ -7,5 +7,7 @@ $.fn.extend({
 $('#distance-button').click(function() {
     $('.distance-measurement').toggleClass(' show ')
     $('#distance-button').toggleText('Display distance', 'Hide distance')
-    console.log("Hej")
+
+    $('#distance-button').toggleClass(' activated ')
 })
+
