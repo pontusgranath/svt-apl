@@ -140,3 +140,6 @@ _site
 .jekyll-cache
 .jekyll-metadata
 vendor
+
+# Auto generated static files
+staticfiles/
