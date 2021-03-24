@@ -28,10 +28,10 @@
             {% endfor %}
 		</datalist>
 
-		<ul id="search-results">
+		<ul id="search-results" class="container">
 			{% for list_title in to_list %}
 
-				<li>{{list_title.0}}<span> - {{list_title.1}}</span></li>
+				<li class="display-5 p-2">{{list_title.0}}<span> - {{list_title.1}}</span></li>
 
             {% endfor %}
 		</ul>

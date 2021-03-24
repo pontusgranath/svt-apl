@@ -36,6 +36,13 @@ h1 {
   border-radius: 0; }
 
 #search-results {
-  color: white; }
+  color: white;
+  list-style: none; }
+  #search-results li {
+    list-style: none; }
+    #search-results li span {
+      display: none; }
+    #search-results li span.show {
+      display: inline; }
 
 /*# sourceMappingURL=style.css.map */
