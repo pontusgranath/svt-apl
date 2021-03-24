@@ -35,6 +35,16 @@ h1 {
 .form-control-lg {
   border-radius: 0; }
 
+#distance-button {
+  margin: auto;
+  border: none;
+  outline: none;
+  min-width: 9rem;
+  padding: 12px;
+  border-radius: 2rem; }
+  #distance-button:active {
+    outline: 2px solid #00c800; }
+
 #search-results {
   color: white;
   list-style: none; }
