@@ -4,5 +4,6 @@ from . import views
 
 urlpatterns = [
     path('', views.home, name='dist_search-home'),
+    path('home/', views.home, name='dist_search-home'),
     url(r'^calculate_distance', views.calculate_distance),
 ]
