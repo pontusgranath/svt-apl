@@ -29,9 +29,10 @@
 		</datalist>
 
 		<ul id="search-results">
-			{% for sorted_value in sorted_values %}
+			{% for t in to_list %}
 
-				<li>{{sorted_value}}</li>
+				<li>{{t.0}}</li>
+				<li>{{t.1}}</li>
 
             {% endfor %}
 		</ul>

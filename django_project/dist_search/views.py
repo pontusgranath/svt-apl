@@ -18,14 +18,16 @@ def calculate_distance(request):
     def distance(t1, t2):
         return res[columns.index(t1), columns.index(t2)]
 
-    search = request.POST('search-title')
+    search = request.POST.get('search-title')
     d = pd.DataFrame([(c, distance(search,c)) for c in columns], columns=['title', 'distance']) 
 
     sorted_values = d.sort_values('distance')
 
-    sorted_values = {'sorted_values': sorted_values}
+    to_list = sorted_values.values.tolist()
 
-    return sorted_values
+    context = {'to_list': to_list}
+
+    return render(request, 'dist_search/home.html', context)
 
 def home(request):
     data = pd.read_csv('Data-Table 1.csv', sep=';')
@@ -33,6 +35,6 @@ def home(request):
 
     columns = list(data.columns)
 
-    c = {'columns': columns}
+    context = {'columns': columns}
 
-    return render(request, 'dist_search/home.html', c)
+    return render(request, 'dist_search/home.html', context)
