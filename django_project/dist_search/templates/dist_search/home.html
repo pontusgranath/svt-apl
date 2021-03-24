@@ -31,8 +31,7 @@
 		<ul id="search-results">
 			{% for t in to_list %}
 
-				<li>{{t.0}}</li>
-				<li>{{t.1}}</li>
+				<li>{{t.0}}<span> - {{t.1}}</span></li>
 
             {% endfor %}
 		</ul>
