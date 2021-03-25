@@ -75,6 +75,19 @@ pip install -r requirements.txt
 ```
 4. Once all installations are done you're finished.
 
+### Adding dependencies
+1. Open a **command prompt** in the repository directory.
+2. Start your virtual environment.
+3. Type the following command:
+```
+pip3 freeze > requirements.txt
+```
+or
+```
+pip freeze > requirements.txt
+```
+4. After a few seconds it should be done.
+
 ## Creating a Jupyter Notebook
 Before proceeding make sure you've followed the steps in [**Creating a virtual environment**](#Creating-a-virtual-environment)
 
