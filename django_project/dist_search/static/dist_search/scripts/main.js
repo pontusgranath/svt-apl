@@ -1,13 +1,11 @@
-$.fn.extend({
-    toggleText: function(a, b){
-        return this.text(this.text() == b ? a : b);
-    }
-});
-
 $('#distance-button').click(function() {
     $('.distance-measurement').toggleClass(' show ')
-    $('#distance-button').toggleText('Display distance', 'Hide distance')
 
-    $('#distance-button').toggleClass(' activated ')
+    if ($('#distance-button').hasClass('activated')) {
+        $('#distance-button').text = 'Display distance'
+    }
+    else {
+        $('#distance-button').text = 'Hide distance'
+    }
 })
 
