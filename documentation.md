@@ -139,6 +139,16 @@ pip freeze > requirements.txt
 ```
 4. After a few seconds it should be done.
 
+## Running the server
+1. Open a command prompt in the repository directory.
+2. Start your virtual environment.
+3. Navigate to the /django-project/ directory were the `manage.py` file is located.
+4. Run the following command: 
+```
+python3 manage.py runserver
+```
+5. Once finished the server should now be located on: http://localhost:8000
+
 ## Creating a Jupyter Notebook
 Before proceeding make sure you've followed the steps in [**Creating a virtual environment**](#Creating-a-virtual-environment)
 
