@@ -27,7 +27,7 @@
 			<form action="calculate_distance" id="search-form" class="d-flex justify-content-center" method="POST">
 				{% csrf_token %}
 				<input type="text" list="shows" name="search-title" id="search-bar" class="form-control-lg" placeholder="Search for title">
-				<input type="number" name="title-amount" id="title-amount" class="form-control-lg" placeholder="0" title="Input the amount of titles you want to be displayed">
+				<input type="number" name="title-amount" id="title-amount" class="form-control-lg" placeholder="Amount of titles" min=0 max=100>
 				<button id="search-button" class="form-control-lg" type="submit"><i class="fas fa-search"></i></button>
 			</form>
 		</div>
