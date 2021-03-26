@@ -14,6 +14,23 @@ h1
     span
         color: $svt-green
 
+#search-form
+    border-color: $text-color
+    border-style: solid
+
+    border-radius: $search-bar-radius
+
+    transition: .3s
+
+    &:active, &:focus, &:hover
+        
+        border-width: $search-bar-border-width
+        border-color: $svt-green
+
+        outline: 0
+        transition: .3s
+    
+
 #search-button
     border-left: none !important
     margin-left: 0 !important
@@ -37,15 +54,23 @@ h1
     border-bottom-left-radius: $search-bar-radius
 
     transition: .3s
-    width: 230px
+    width: 250px
 
     &:active, &:focus
-        border-width: $search-bar-border-width
         outline: 0
-        border-color: $svt-green
-
         transition: .3s
-        width: 400px 
+        width: 420px 
+
+#title-amount
+    transition: .3s
+    width: 110px
+    border: none
+    border-left: 1px solid black
+
+    &:active, &:focus
+        outline: 0
+        transition: .3s
+        width: 200px
 
 .form-control-lg
     border-radius: 0
