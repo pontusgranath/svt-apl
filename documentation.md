@@ -27,6 +27,57 @@ sudo apt install python3 python3-pip ipython3
 3. Once on the application page, click **Get**
 4. If the program doesn't install automatically, click **Install** once the download finishes.
 
+### MacOS
+1. Download Python 3.8 [Here](https://www.python.org/downloads/release/python-388/).
+2. Scroll to the bottom of the page and choose the **macOS 64-bit Intel installer**.
+3. Go through the installation procedure and accept any license agreement that come up.
+4. Once the installation finishes you've successfully installed Python and can close the window.
+
+## Installing PIP
+Before proceeding make sure you've followed the steps in [**Installing Python**](#Installing-Python).
+
+While pip normally comes pre-installed with Python theres still a chance you still might not have it.
+1. Open a command prompt and type the following
+```
+pip3 version
+```
+or
+```
+pip version
+```
+	
+If either of those returns the following (Version number and path may wary):
+```
+pip 20.0.2 from /usr/lib/python3/dist-packages/pip (python 3.8)
+```
+Then you already have pip installed and can skip **Installing PIP**. If not, then you may keep following these instructions.
+
+### WSL - Ubuntu
+2. In the command prompt, type the following:
+```
+sudo apt install python3-pip
+```
+3. Once finished, you should now have pip installed on your system.
+
+### Windows 10
+2. Download get.pip.py from [here](https://bootstrap.pypa.io/get-pip.py) (CTRL + S) and save it in a directory of your choice.
+3. Open a command prompt were the file was saved and type the following:
+```
+python3 get-pip.py
+```
+4. Once the installation finishes, you should now have pip installed on your system.
+
+### MacOS
+2. In the command prompt, run the following command:
+```
+curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+```
+3. Open a command prompt where the file was saved and type the following:
+```
+python3 get-pip.py
+```
+4. Once the installation finishes, you should now have pip installed on your system.
+
 ## Creating a virtual environment
 Before proceeding, make sure you've followed the steps in [**Installing Python**](#Installing-Python).
 
@@ -63,6 +114,7 @@ deactivate
 ```
 
 ### Installing dependencies
+Dependencies required to run the server are located in the `requirements.txt` file. To install them, do the following:
 1. Open a **command prompt** in the repository directory.
 2. Start your virtual environment.
 3. Type the following command:
@@ -75,7 +127,8 @@ pip install -r requirements.txt
 ```
 4. Once all installations are done you're finished.
 
-### Adding dependencies
+### Updating dependencies
+If any new dependencies are added, do the following to update `requirements.txt`:
 1. Open a **command prompt** in the repository directory.
 2. Start your virtual environment.
 3. Type the following command:
@@ -87,6 +140,16 @@ or
 pip freeze > requirements.txt
 ```
 4. After a few seconds it should be done.
+
+## Running the server
+1. Open a command prompt in the repository directory.
+2. Start your virtual environment.
+3. Navigate to the `/django-project/` directory where the `manage.py` file is located.
+4. Run the following command: 
+```
+python3 manage.py runserver
+```
+5. Once finished the server should now be located on: http://localhost:8000
 
 ## Creating a Jupyter Notebook
 Before proceeding make sure you've followed the steps in [**Creating a virtual environment**](#Creating-a-virtual-environment)
