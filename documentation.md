@@ -27,8 +27,11 @@ sudo apt install python3 python3-pip ipython3
 3. Once on the application page, click **Get**
 4. If the program doesn't install automatically, click **Install** once the download finishes.
 
-### Mac OS
-
+### MacOS
+1. Download Python 3.8 [Here](https://www.python.org/downloads/release/python-388/).
+2. Scroll to the bottom of the page and choose the **macOS 64-bit Intel installer**.
+3. Go through the installation procedure and accept any license agreement that come up.
+4. Once the installation finishes you've successfully installed Python and can close the window.
 
 ## Creating a virtual environment
 Before proceeding, make sure you've followed the steps in [**Installing Python**](#Installing-Python).
