@@ -72,7 +72,7 @@ python3 get-pip.py
 ```
 curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 ```
-3. Open a command prompt were the file was saved and type the following:
+3. Open a command prompt where the file was saved and type the following:
 ```
 python3 get-pip.py
 ```
