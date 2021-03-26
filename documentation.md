@@ -27,6 +27,9 @@ sudo apt install python3 python3-pip ipython3
 3. Once on the application page, click **Get**
 4. If the program doesn't install automatically, click **Install** once the download finishes.
 
+### Mac OS
+
+
 ## Creating a virtual environment
 Before proceeding, make sure you've followed the steps in [**Installing Python**](#Installing-Python).
 
