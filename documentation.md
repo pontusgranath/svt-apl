@@ -33,6 +33,51 @@ sudo apt install python3 python3-pip ipython3
 3. Go through the installation procedure and accept any license agreement that come up.
 4. Once the installation finishes you've successfully installed Python and can close the window.
 
+## Installing PIP
+Before proceeding make sure you've followed the steps in [**Installing Python**](#Installing-Python).
+
+While pip normally comes pre-installed with Python theres still a chance you still might not have it.
+1. Open a command prompt and type the following
+```
+pip3 version
+```
+or
+```
+pip version
+```
+	
+If either of those returns the following (Version number and path may wary)
+```
+pip 20.0.2 from /usr/lib/python3/dist-packages/pip (python 3.8)
+```
+Then you already have pip installed and can skip **Installing PIP**. If not, then you may keep following these instructions.
+
+### WSL - Ubuntu
+2. In the command prompt, type the following:
+```
+sudo apt install python3-pip
+```
+3. Once finished, you should now have pip installed on your system.
+
+### Windows 10
+2. Download get.pip.py from [here](https://bootstrap.pypa.io/get-pip.py) (CTRL + S) and save it were it in a directory of your choice.
+3. Open a command prompt were the file was saved and type the following:
+```
+python3 get-pip.py
+```
+4. Once the installation finishes, you should now have pip installed on your system.
+
+### MacOS
+2. In the command prompt, run the following command:
+```
+curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+```
+3. Open a command prompt were the file was saved and type the following:
+```
+python3 get-pip.py
+```
+4. Once the installation finishes, you should now have pip installed on your system.
+
 ## Creating a virtual environment
 Before proceeding, make sure you've followed the steps in [**Installing Python**](#Installing-Python).
 
