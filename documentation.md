@@ -46,7 +46,7 @@ or
 pip version
 ```
 	
-If either of those returns the following (Version number and path may wary)
+If either of those returns the following (Version number and path may wary):
 ```
 pip 20.0.2 from /usr/lib/python3/dist-packages/pip (python 3.8)
 ```
