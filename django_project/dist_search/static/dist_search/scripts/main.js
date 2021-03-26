@@ -14,3 +14,7 @@ $('#distance-button').click(function () {
     }
 })
 
+$('#expand').click(function () {
+    
+})
+
