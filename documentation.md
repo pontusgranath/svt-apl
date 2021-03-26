@@ -60,7 +60,7 @@ sudo apt install python3-pip
 3. Once finished, you should now have pip installed on your system.
 
 ### Windows 10
-2. Download get.pip.py from [here](https://bootstrap.pypa.io/get-pip.py) (CTRL + S) and save it were it in a directory of your choice.
+2. Download get.pip.py from [here](https://bootstrap.pypa.io/get-pip.py) (CTRL + S) and save it in a directory of your choice.
 3. Open a command prompt were the file was saved and type the following:
 ```
 python3 get-pip.py
@@ -114,6 +114,7 @@ deactivate
 ```
 
 ### Installing dependencies
+Dependencies required to run the server are located in the `requirements.txt` file. To install them, do the following:
 1. Open a **command prompt** in the repository directory.
 2. Start your virtual environment.
 3. Type the following command:
@@ -126,7 +127,8 @@ pip install -r requirements.txt
 ```
 4. Once all installations are done you're finished.
 
-### Adding dependencies
+### Updating dependencies
+If any new dependencies are added, do the following to update `requirements.txt`:
 1. Open a **command prompt** in the repository directory.
 2. Start your virtual environment.
 3. Type the following command:
@@ -142,7 +144,7 @@ pip freeze > requirements.txt
 ## Running the server
 1. Open a command prompt in the repository directory.
 2. Start your virtual environment.
-3. Navigate to the /django-project/ directory were the `manage.py` file is located.
+3. Navigate to the `/django-project/` directory were the `manage.py` file is located.
 4. Run the following command: 
 ```
 python3 manage.py runserver
