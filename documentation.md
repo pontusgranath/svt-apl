@@ -92,7 +92,7 @@ pip install virtualenv
 ```
 2. Once finished, virtualenv should now be installed on your system.
 
-**Note:** for WSL you may need to type sudo before pip to get root permissions.
+**Note:** for Linux environments you may need to type sudo before pip to get root permissions.
 
 ### Creating the virtual environment
 1. Open a **command prompt** in the repository directory.
@@ -112,6 +112,24 @@ source venv/bin/activate
 ```
 deactivate
 ```
+
+### Troubleshooting
+
+#### WSL - Ubuntu
+If you get the following error when creating a virtual environment, try following these instructions to fix it:
+```
+ModuleNotFoundError: No module named 'virtualenv.seed.embed.via_app_data'
+```
+1. Open a terminal and run this command:
+```
+sudo apt install python3-virtualenv
+```
+2. To finally create an environment, run this command:
+```
+sudo python3 -m virtualenv venv
+```
+3. You may now proceed as normal when interacting with the environment.
+
 
 ### Installing dependencies
 Dependencies required to run the server are located in the `requirements.txt` file. To install them, do the following:
