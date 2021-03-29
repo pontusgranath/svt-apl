@@ -14,7 +14,19 @@ $('#distance-button').click(function () {
     }
 })
 
-$('#expand').click(function () {
-    
-})
-
+$(document).on('click', '.list-title', function() {    
+    $.ajax({
+        // url: '/calculate_distance',
+        method: 'POST', // or another (GET), whatever you need
+        data: {
+            // csrfmiddlewaretoken: "{{ csrf_token }}",
+            name: 'inline-search', // data you need to pass to your function
+            click: true
+        },
+        success: function (data) {
+            console.log('llama')
+            // success callback
+            // you can process data returned by function from views.py
+        }
+    });
+});

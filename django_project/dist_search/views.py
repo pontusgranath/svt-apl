@@ -3,7 +3,9 @@ import pandas as pd
 import numpy as np
 import seaborn as sns
 from scipy.spatial.distance import pdist, squareform
+from django.views.decorators.csrf import csrf_exempt
 
+@csrf_exempt
 def calculate_distance(request):
     data = pd.read_csv('Data-Table 1.csv', sep=';')
     data.set_index('Client ID (ns_vid)', inplace=True)
