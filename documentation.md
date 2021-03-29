@@ -128,7 +128,7 @@ sudo apt install python3-virtualenv
 ```
 sudo python3 -m virtualenv venv
 ```
-3. You may now proceed like normal when interacting with the environment.
+3. You may now proceed as normal when interacting with the environment.
 
 
 ### Installing dependencies
