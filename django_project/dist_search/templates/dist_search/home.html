@@ -31,7 +31,6 @@
 				<button id="search-button" class="form-control-lg" type="submit"><i class="fas fa-search"></i></button>
 			</form>
 		</div>
-
 		<datalist id="shows">
 			{% for show_title in columns %}
 
@@ -40,8 +39,6 @@
             {% endfor %}
 		</datalist>
 
-		<div class="container d-flex justify-content-center">
-		</div>
 		<ul id="search-results" class="container">
 
 			{% for list_title in to_list|slice:"1:" %}
@@ -52,11 +49,21 @@
 					</div>
 				{% endif %}
 
-				<li class="list-title display-5 p-2">{{list_title.0}}<span class="distance-measurement"> - {{list_title.1}}</span></li>
-				
+				<li class="list-title display-5 p-2" show-title="{{list_title.0}}">{{list_title.0}}<span class="distance-measurement"> - {{list_title.1}}</span></li>
             {% endfor %}
 		</ul>
-		
+
+		<div class="inline-search-results py-2 px-4">
+			<h3>Search results for: <span>Title</span></h3>
+			<ul>
+				<li>Titel 1</li>
+				<li>2 Titel</li>
+				<li>Titel 3</li>
+				<li>4 Titel</li>
+				<li>Titel 5</li>
+			</ul>
+		</div>
+
 		<script src="https://kit.fontawesome.com/ee2129c6a0.js" crossorigin="anonymous"></script>
 		<script src="{% static 'dist_search/scripts/jquery-3.6.0.min.js' %}"></script>
 		<script src="{% static 'dist_search/scripts/bootstrap.min.js' %}"></script>

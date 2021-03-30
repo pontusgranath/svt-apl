@@ -104,8 +104,40 @@ h1
 
     li
         list-style: none
+        position: relative
 
 .distance-measurement
     display: none
 .distance-measurement.show
     display: inline
+
+.inline-search-results
+    // display: none
+    position: absolute
+
+    color: $text-color
+    background-color: #181b1d
+    
+    border-color: $svt-green
+    border-width: 2px
+    border-style: solid
+
+    // top: 50%
+    // left: 50%
+    // transform: translate(-50%, -50%)
+
+    right: 0
+    top: 0
+
+    z-index: 100
+
+    h3
+
+        span
+            color: $svt-green
+
+    ul
+        list-style: none
+
+        li
+            font-size: 2rem
