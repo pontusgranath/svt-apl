@@ -23,17 +23,16 @@ $('#distance-button').click(function () {
 // })
 
 $('.list-title').click(function search(bool){
-    if (bool) {
-        try {
-        let searchedTitle = $(this).attr("show-title")
-        console.log(searchedTitle) // DEBUG // DEBUG // DEBUG
+    try {
+    let searchedTitle = $(this).attr("show-title")
+    console.log(searchedTitle) // DEBUG // DEBUG // DEBUG
 
-        $('.inline-search-results').remove()
-        $(this).append("<div class='inline-search-results py-2 px-4'><h3>Search results for: <span>"+ searchedTitle +"</span></h3><ul><li>Titel 1</li><li>2 Titel</li><li>Titel 3</li><li>4 Titel</li><li>Titel 5</li></ul></div>")
-        }
-        catch (ReferenceError) {
-            // skip ???
-        }
+    $('.inline-search-results').remove()
+    $(this).append("<div class='inline-search-results py-2 px-4'><h3>Search results for: <span>"+ searchedTitle +"</span></h3><ul><li>Titel 1</li><li>2 Titel</li><li>Titel 3</li><li>4 Titel</li><li>Titel 5</li></ul></div>")
+    }
+    catch (ReferenceError) {
+        // skip ???
+        console.log("ReferenceError")
     }
 })
 
@@ -51,7 +50,7 @@ $('.list-title').click(function() {
             // success callback
             // you can process data returned by function from views.py
 
-            search(true)
+            // CHANGE DATA IN .list-title
         }
     })
 })
