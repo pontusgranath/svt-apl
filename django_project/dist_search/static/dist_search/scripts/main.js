@@ -14,14 +14,6 @@ $('#distance-button').click(function () {
     }
 })
 
-// $('.list-title').click(function(){
-//     let searchedTitle = $(this).attr("show-title")
-//     console.log(searchedTitle) // DEBUG // DEBUG // DEBUG
-
-//     $('.inline-search-results').remove()
-//     $(this).append("<div class='inline-search-results py-2 px-4'><h3>Search results for: <span>"+ searchedTitle +"</span></h3><ul><li>Titel 1</li><li>2 Titel</li><li>Titel 3</li><li>4 Titel</li><li>Titel 5</li></ul></div>")
-// })
-
 $('.list-title').click(function search(bool){
     try {
     let searchedTitle = $(this).attr("show-title")
@@ -34,23 +26,4 @@ $('.list-title').click(function search(bool){
         // skip ???
         console.log("ReferenceError")
     }
-})
-
-$('.list-title').click(function() {    
-    $.ajax({
-        url: '/calculate_inline_distance',
-        method: 'POST', // or another (GET), whatever you need
-        data: {
-            // csrfmiddlewaretoken: "{{ csrf_token }}",
-            name: 'inline-search-title', // data you need to pass to your function
-            click: true
-        },
-        success: function (data) {
-            console.log('llama') // DEBUG // DEBUG // DEBUG
-            // success callback
-            // you can process data returned by function from views.py
-
-            // CHANGE DATA IN .list-title
-        }
-    })
 })
