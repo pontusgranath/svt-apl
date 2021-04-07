@@ -40,7 +40,6 @@
 		</datalist>
 
 		<ul id="search-results" class="container">
-
 			{% for list_title in to_list|slice:"1:" %}
 				{% if forloop.first %}
 					<div class="container d-flex justify-content-between align-items-center">
@@ -49,11 +48,7 @@
 					</div>
 				{% endif %}
 
-				<li name="inline-search-title" class="list-title display-5 p-2" close_titles="{{ sub_title_dict.list_title.0 }}" close_distances="" show-title="{{list_title.0}}">{{list_title.0}}<span class="distance-measurement"> - {{list_title.1}}</span></li>
-				<script>
-					console.log("{{ sub_title_dict.list_title.0 }}")
-					console.log("{{ sub_title_dict }}")
-				</script>
+				<li name="inline-search-title" class="list-title display-5 p-2" close-titles="" close-distances="" show-title="{{list_title.0}}">{{list_title.0}}<span class="distance-measurement"> - {{list_title.1}}</span></li>
             {% endfor %}
 		</ul>
 
@@ -76,11 +71,15 @@
 		{% endfor %}
 
 		<script>
-			console.log("{{ sub_title_dict }}")
-			console.log("{{ sub_title_distance_dict }}")
-
-			let sub_title_dict = "{{ sub_title_dict }}"
+			let sub_title_dict = "{{ sub_title_dict.1.1 }}"
 			let sub_title_distance_dict = "{{ sub_title_distance_dict }}"
+
+			console.log(sub_title_dict)
+			console.log(sub_title_distance_dict)
+
+			
+
+			let ass = 111
 		</script>
 		
 		<script src="https://kit.fontawesome.com/ee2129c6a0.js" crossorigin="anonymous"></script>
