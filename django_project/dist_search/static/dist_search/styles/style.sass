@@ -20,7 +20,7 @@ h1
 
     border-radius: $search-bar-radius
 
-    transition: .3s
+    transition: border-width .3s, border-color .3s
 
     &:active, &:focus, &:hover
         
@@ -28,7 +28,7 @@ h1
         border-color: $svt-green
 
         outline: 0
-        transition: .3s
+        transition: border-width .3s, border-color .3s
     
 
 #search-button
@@ -53,23 +53,23 @@ h1
     border-top-left-radius: $search-bar-radius
     border-bottom-left-radius: $search-bar-radius
 
-    transition: .3s
+    transition: width .3s
     width: 250px
 
     &:active, &:focus
         outline: 0
-        transition: .3s
+        transition: width .3s
         width: 420px 
 
 #title-amount
-    transition: .3s
+    transition: width .3s
     width: 110px
     border: none
     border-left: 1px solid black
 
     &:active, &:focus
         outline: 0
-        transition: .3s
+        transition: width .3s
         width: 200px
 
 .form-control-lg
