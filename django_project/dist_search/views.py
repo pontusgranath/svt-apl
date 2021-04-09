@@ -38,7 +38,6 @@ def calculate_distance(request):
     sub_title_dict = {}
     sub_title_distance_dict = {}
 
-    # 
     index = 0
     for sub_title in to_list[1:]:
         # Selects only title from list with both title and distance
