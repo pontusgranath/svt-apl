@@ -76,19 +76,26 @@ h1
     border-radius: 0
 
 #distance-button
+    $distance-button-transition: .2s
+
     margin: none
-    border: none
+    border-width: 1px
+    border-color: #ffffff00
     outline: none
 
     min-width: 9.5rem
 
     border-radius: $search-bar-radius
 
+
+    transition: border-width $distance-button-transition
+
     &:active
         border: $search-bar-border-width solid $svt-green
         
     &.activated
         border: $search-bar-border-width solid $svt-green
+        transition: border-width $distance-button-transition
 
 
 #search-results
@@ -112,9 +119,14 @@ h1
         cursor: pointer
 
 .distance-measurement
-    display: none
-.distance-measurement.show
     display: inline
+
+    opacity: 0%
+    transition: opacity .2s
+
+    &.show
+        opacity: 100%
+        transition: opacity .2s
 
 .inline-search-wrapper
     position: fixed
