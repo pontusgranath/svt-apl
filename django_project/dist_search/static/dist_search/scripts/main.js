@@ -13,4 +13,3 @@ $('#distance-button').click(function () {
         $('#distance-button').addClass(' activated ')
     }
 })
-

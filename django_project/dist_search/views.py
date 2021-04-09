@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 import seaborn as sns
 from scipy.spatial.distance import pdist, squareform
+from django.views.decorators.csrf import csrf_exempt
 
 def calculate_distance(request):
     data = pd.read_csv('Data-Table 1.csv', sep=';')
@@ -19,9 +20,16 @@ def calculate_distance(request):
         return res[columns.index(t1), columns.index(t2)]
 
     search = request.POST.get('search-title')
-    dataframe = pd.DataFrame([(c, distance(search, c)) for c in columns], columns=['title', 'distance'])
+    try:
+        dataframe = pd.DataFrame([(c, distance(search, c)) for c in columns], columns=['title', 'distance'])
+    except ValueError:
+        search = "Agenda"
+        dataframe = pd.DataFrame([(c, distance(search, c)) for c in columns], columns=['title', 'distance'])
 
-    amount_of_titles = int(request.POST.get('title-amount'))
+    try:
+        amount_of_titles = int(request.POST.get('title-amount'))
+    except ValueError:
+        amount_of_titles = 5
 
     sorted_values = dataframe.sort_values('distance')[:amount_of_titles + 1]
 
@@ -30,7 +38,7 @@ def calculate_distance(request):
     context = {
         'search': search,
         'to_list': to_list,
-        'columns': columns
+        'columns': columns,
     }
 
     return render(request, 'dist_search/home.html', context)
