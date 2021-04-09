@@ -35,41 +35,10 @@ def calculate_distance(request):
 
     to_list = sorted_values.values.tolist()
 
-    sub_title_dict = {}
-    sub_title_distance_dict = {}
-
-    index = 0
-    for sub_title in to_list[1:]:
-        # Selects only title from list with both title and distance
-        sub_title = sub_title[0]
-
-        dataframe = pd.DataFrame([(c, distance(sub_title, c)) for c in columns], columns=['title', 'distance'])
-
-        sub_sorted_values = dataframe.sort_values('distance')[:6]
-
-        sub_to_list = sub_sorted_values.values.tolist()
-
-        titleList = []
-        distanceList = []
-
-        for item in sub_to_list:
-            titleList.append(item[0])
-            distanceList.append(item[1])
-
-        titleList.pop(0)
-        distanceList.pop(0)
-        
-        sub_title_dict[index] = titleList
-        sub_title_distance_dict[index] = distanceList
-
-        index += 1
-
     context = {
         'search': search,
         'to_list': to_list,
         'columns': columns,
-        'sub_title_dict': sub_title_dict,
-        'sub_title_distance_dict': sub_title_distance_dict,
     }
 
     return render(request, 'dist_search/home.html', context)

@@ -51,28 +51,6 @@
 				<li name="inline-search-title" class="list-title display-5 p-2" close-titles="" close-distances="" show-title="{{list_title.0}}">{{list_title.0}}<span class="distance-measurement"> - {{list_title.1}}</span></li>
             {% endfor %}
 		</ul>
-
-		<div class="inline-search-wrapper">
-			<div class="inline-search-results py-2 px-4">
-				<h3>Search results for: <span>Title</span></h3>
-				<ul>
-					{% for key, value in sub_title_dict.item %}
-						<li>{{key}} - {{value}}</li>
-					{% endfor %}
-					{% for item in sub_title_dict.0 %}
-						<li>{{ item }}</li>
-					{% endfor %}
-				</ul>
-			</div>
-		</div>
-
-		<script>
-			let sub_title_dict = "{{ sub_title_dict.1.1 }}"
-			let sub_title_distance_dict = "{{ sub_title_distance_dict }}"
-
-			console.log(sub_title_dict)
-			console.log(sub_title_distance_dict)
-		</script>
 		
 		<script src="https://kit.fontawesome.com/ee2129c6a0.js" crossorigin="anonymous"></script>
 		<script src="{% static 'dist_search/scripts/jquery-3.6.0.min.js' %}"></script>
