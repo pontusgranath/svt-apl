@@ -3,9 +3,12 @@ import pandas as pd
 import numpy as np
 import seaborn as sns
 from scipy.spatial.distance import pdist, squareform
+import json
+import sqlite3
 
 def calculate_inline_distance(request):
-    data = pd.read_csv('Data-Table 1.csv', sep=';')
+    con = sqlite3.connect('db.sqlite3')
+    data = pd.read_sql('SELECT * FROM svt_statistics', con)
     data.set_index('Client ID (ns_vid)', inplace=True)
 
     pd.set_option('display.max_columns', None)
@@ -36,7 +39,8 @@ def calculate_inline_distance(request):
     return render(request, 'dist_search/home.html', context)
 
 def calculate_distance(request):
-    data = pd.read_csv('Data-Table 1.csv', sep=';')
+    con = sqlite3.connect('db.sqlite3')
+    data = pd.read_sql('SELECT * FROM svt_statistics', con)
     data.set_index('Client ID (ns_vid)', inplace=True)
 
     pd.set_option('display.max_columns', None)
@@ -74,7 +78,8 @@ def calculate_distance(request):
     return render(request, 'dist_search/home.html', context)
 
 def home(request):
-    data = pd.read_csv('Data-Table 1.csv', sep=';')
+    con = sqlite3.connect('db.sqlite3')
+    data = pd.read_sql('SELECT * FROM svt_statistics', con)
     data.set_index('Client ID (ns_vid)', inplace=True)
 
     columns = list(data.columns)
