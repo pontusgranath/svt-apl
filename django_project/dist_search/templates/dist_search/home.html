@@ -42,17 +42,18 @@
 			{% for list_title in to_list|slice:"1:" %}
 				{% if forloop.first %}
 					<div class="container d-flex justify-content-between align-items-center">
-						<h2 class="display-4">Search results for: <span>{{search}}<span></h2>
+						<h2 id="search-results-text" class="display-4">Search results for: <span>{{search}}<span></h2>
 						<button id="distance-button" class="button p-2">Display distance</button>
 					</div>
 				{% endif %}
 
 				<span class="search-item-wrapper">
 					<li name="inline-search-title" class="list-title display-5 p-2 d-flex" close-titles="" close-distances="" show-title="{{list_title.0}}">
-						<form action="calculate-inline-distance" method="GET">
-							<button class="plus-button">
+						<form id="inline-distance-form" action="calculate-inline-distance" method="GET">
+							<button class="plus-button" form="inline-distance-form" type="submit">
 								+
 							</button>
+							<input type="hidden" name="inline-search" value="{{list_title.0}}"/>
 						</form>
 						{{list_title.0}} 
 						<span class="distance-measurement">
@@ -62,7 +63,7 @@
 				</span>
             {% endfor %}
 		</ul>
-		
+
 		<script src="https://kit.fontawesome.com/ee2129c6a0.js" crossorigin="anonymous"></script>
 		<script src="{% static 'dist_search/scripts/jquery-3.6.0.min.js' %}"></script>
 		<script src="{% static 'dist_search/scripts/bootstrap.min.js' %}"></script>
