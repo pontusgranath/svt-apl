@@ -107,16 +107,25 @@ h1
     h2
         text-decoration: underline
         text-decoration-thickness: 2.5px
-
-    span
-        color: $svt-green
+        
 
     li
         list-style: none
         position: relative
 
+.plus-button
+    color: $svt-green
+    background: none !important
+    border: none
+
+    &:hover, &:focus
+        border: none
+        outline: none
+        
+
 .distance-measurement
     display: inline
+    color: $svt-green
 
     opacity: 0%
     transition: opacity .2s

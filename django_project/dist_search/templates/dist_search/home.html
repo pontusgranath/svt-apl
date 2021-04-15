@@ -48,7 +48,19 @@
 					</div>
 				{% endif %}
 
-				<li name="inline-search-title" class="list-title display-5 p-2" close-titles="" close-distances="" show-title="{{list_title.0}}">{{list_title.0}}<span class="distance-measurement"> - {{list_title.1}}</span></li>
+				<span class="search-item-wrapper">
+					<li name="inline-search-title" class="list-title display-5 p-2 d-flex" close-titles="" close-distances="" show-title="{{list_title.0}}">
+						<form action="calculate-inline-distance" method="GET">
+							<button class="plus-button">
+								+
+							</button>
+						</form>
+						{{list_title.0}} 
+						<span class="distance-measurement">
+							&nbsp- {{list_title.1}}
+						</span>
+					</li>
+				</span>
             {% endfor %}
 		</ul>
 		
