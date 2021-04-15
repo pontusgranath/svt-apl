@@ -22,7 +22,7 @@ def calculate_inline_distance(request):
         return res[columns.index(t1), columns.index(t2)]
 
     search = "Antikrundan" # TEMPORARY
-    # search = request.POST.get('inline-search-title')
+    # search = request.GET.get('inline-search-title')
 
     dataframe = pd.DataFrame([(c, distance(search, c)) for c in columns], columns=['title', 'distance'])
 
