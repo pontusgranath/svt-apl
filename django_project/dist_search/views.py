@@ -35,6 +35,7 @@ def calculate_inline_distance(request):
         'inline_search': search,
         'inline_to_list': to_list,
         'inline_columns': columns
+        # Add everything from normal calculate_distance
     }
 
     return render(request, 'dist_search/home.html', context)
