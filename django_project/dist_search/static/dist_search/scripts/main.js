@@ -1,3 +1,16 @@
+try {
+    const queryString = window.location.search
+    const urlParams = new URLSearchParams(queryString);
+    const currentInlineSearch = urlParams.get('inline-search-title')
+    console.log(queryString)
+    console.log(currentInlineSearch)
+
+    $(document).ready(function(){
+        window.location.href = '#' + currentInlineSearch
+    })
+}
+catch {}
+
 let distanceButtonText = $('#distance-button').text()
 
 $('#distance-button').click(function () {
@@ -13,3 +26,4 @@ $('#distance-button').click(function () {
         $('#distance-button').addClass(' activated ')
     }
 })
+

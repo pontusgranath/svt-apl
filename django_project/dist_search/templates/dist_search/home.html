@@ -22,7 +22,7 @@
 
 			</style>
 		</noscript>
-		<h1 class="text-center display-2 my-4">SVT-<span>APL</span> Searchbar for statistical analysis stuff</h1>
+		<h1 id="title" class="text-center display-2 my-4">SVT-<span>APL</span> Searchbar for statistical analysis stuff</h1>
 		<div class="container d-flex justify-content-center align-items-center my-5">
 			<form action="calculate_distance" id="search-form" class="d-flex justify-content-center" method="GET">
 				<input type="text" list="shows" name="search-title" id="search-bar" class="form-control-lg" placeholder="Search for title">
@@ -48,7 +48,7 @@
 				{% endif %}
 
 				<span class="search-item-wrapper">
-					<li name="inline-search-title" class="list-title display-5 p-2 d-flex" show-title="{{list_title.0}}">
+					<li id="{{list_title.0}}" name="inline-search-title" class="list-title display-5 p-2 d-flex" show-title="{{list_title.0}}">
 						<form action="calculate_inline_distance" method="GET">
 							<input class="plus-button" type="submit" value="+">
 							<input type="hidden" name="inline-search-title" value="{{list_title.0}}"/>
@@ -63,13 +63,17 @@
 					{% if list_title.0 == inline_search %}
 						<ul>
 							{% for inline_list_title in inline_to_list|slice:"1:" %}
-								<li class="text-light">{{inline_list_title.0}} - {{inline_list_title.1}}</li>
+								<li class="text-light">{{inline_list_title.0}} - <span class="inline_distance">{{inline_list_title.1}}</span></li>
 							{% endfor %}
 						</ul>
 					{% endif %}
 				</span>
             {% endfor %}
 		</ul>
+
+		<a id="back-to-top" href="#title" class="display-5 py-2 px-4 rounded-circle">
+			<i class="fas fa-chevron-up"></i>
+		</a>
 
 		<script src="https://kit.fontawesome.com/ee2129c6a0.js" crossorigin="anonymous"></script>
 		<script src="{% static 'dist_search/scripts/jquery-3.6.0.min.js' %}"></script>
