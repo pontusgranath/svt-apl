@@ -21,21 +21,25 @@ def calculate_inline_distance(request):
     def distance(t1, t2):
         return res[columns.index(t1), columns.index(t2)]
 
-    # search = "Antikrundan" # TEMPORARY
-    search = request.GET.get('inline-search-title')
+    inline_search = request.GET.get('inline-search-title')
+    search = request.GET.get('search-title')
+    amount_of_titles = int(request.GET.get('title-amount'))
 
+    inline_dataframe = pd.DataFrame([(c, distance(inline_search, c)) for c in columns], columns=['title', 'distance'])
     dataframe = pd.DataFrame([(c, distance(search, c)) for c in columns], columns=['title', 'distance'])
 
-    sorted_values = dataframe.sort_values('distance')[:5 + 1]
+    inline_sorted_values = inline_dataframe.sort_values('distance')[:5 + 1]
+    sorted_values = dataframe.sort_values('distance')[:amount_of_titles + 1]
 
+    inline_to_list = inline_sorted_values.values.tolist()
     to_list = sorted_values.values.tolist()
 
     context = {
         'search': search,
-        'inline_search': search,
-        'inline_to_list': to_list,
-        'inline_columns': columns
-        # Add everything from normal calculate_distance
+        'to_list': to_list,
+        'columns': columns,
+        'inline_search': inline_search,
+        'inline_to_list': inline_to_list,
     }
 
     return render(request, 'dist_search/home.html', context)
