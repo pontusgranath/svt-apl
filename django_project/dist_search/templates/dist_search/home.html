@@ -50,7 +50,7 @@
 				<span class="search-item-wrapper">
 					<li id="{{list_title.0}}" name="inline-search-title" class="list-title display-6 p-2" show-title="{{list_title.0}}">
 						<form class="d-inline" action="calculate_inline_distance" method="GET">
-							<input class="plus-button" type="submit" value="+">
+							<input class="plus-button" type="submit" value="{% if list_title.0 == inline_search %}>{% else %}+{% endif %}">
 							<input type="hidden" name="inline-search-title" value="{{list_title.0}}"/>
 							<input type="hidden" name="search-title" value="{{search}}"/>
 							<input type="hidden" name="title-amount" value="{{title_amount}}">

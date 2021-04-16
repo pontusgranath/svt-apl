@@ -5,7 +5,7 @@ try {
     console.log(queryString)
     console.log(currentInlineSearch)
 
-    $(document).ready(function(){
+    $(document).ready(function() {
         window.location.href = '#' + currentInlineSearch
     })
 }
@@ -13,7 +13,7 @@ catch {}
 
 let distanceButtonText = $('#distance-button').text()
 
-$('#distance-button').click(function () {
+$('#distance-button').click(function() {
     $('.distance-measurement').toggleClass(' show ')
 
 
@@ -26,4 +26,3 @@ $('#distance-button').click(function () {
         $('#distance-button').addClass(' activated ')
     }
 })
-
