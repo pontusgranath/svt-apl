@@ -30,6 +30,7 @@
 				<button id="search-button" class="form-control-lg" type="submit"><i class="fas fa-search"></i></button>
 			</form>
 		</div>
+		<!-- Creates search results autofill -->
 		<datalist id="shows">
 			{% for show_title in titles %}
 
@@ -39,7 +40,9 @@
 		</datalist>
 
 		<ul id="search-results" class="container">
+			<!-- Generates search results -->
 			{% for list_title in list_of_titles|slice:"1:" %}
+				<!-- Creates search results header on first loop -->
 				{% if forloop.first %}
 					<div class="container d-flex justify-content-between align-items-center">
 						<h2 id="search-results-text" class="display-4">Search results for: <span>{{search}}<span></h2>
@@ -60,6 +63,7 @@
 							- {{list_title.1}}
 						</span>
 					</li>
+					<!-- Puts inline search results under correct title -->
 					{% if list_title.0 == inline_search %}
 						<ul>
 							{% for inline_list_title in inline_list_of_titles|slice:"1:" %}
