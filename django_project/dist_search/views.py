@@ -11,9 +11,6 @@ def calculate_inline_distance(request):
     data = pd.read_sql('SELECT * FROM svt_statistics', con)
     data.set_index('Client ID (ns_vid)', inplace=True)
 
-    pd.set_option('display.max_columns', None)
-    pd.set_option('display.max_rows', None)
-
     matrix = np.matrix(data)
     titles = list(data.columns)
     res = squareform(pdist(matrix, 'hamming'))
@@ -49,9 +46,6 @@ def calculate_distance(request):
     con = sqlite3.connect('db.sqlite3')
     data = pd.read_sql('SELECT * FROM svt_statistics', con)
     data.set_index('Client ID (ns_vid)', inplace=True)
-
-    pd.set_option('display.max_columns', None)
-    pd.set_option('display.max_rows', None)
 
     matrix = np.matrix(data)
     titles = list(data.columns)
