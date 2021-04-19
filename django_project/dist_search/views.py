@@ -35,10 +35,10 @@ def calculate_inline_distance(request):
     to_list = sorted_values.values.tolist()
 
     context = {
-        'title_amount': amount_of_titles,
         'search': search,
-        'to_list': to_list,
         'columns': columns,
+        'title_amount': amount_of_titles,
+        'to_list': to_list,
         'inline_search': inline_search,
         'inline_to_list': inline_to_list,
     }
@@ -77,10 +77,10 @@ def calculate_distance(request):
     to_list = sorted_values.values.tolist()
 
     context = {
-        'title_amount': amount_of_titles,
+        'columns': columns,
         'search': search,
+        'title_amount': amount_of_titles,
         'to_list': to_list,
-        'columns': columns
     }
 
     return render(request, 'dist_search/home.html', context)
