@@ -32,11 +32,11 @@ def calculate_inline_distance(request):
 
     # Sorts titles and sets an upper limit on how many should be displayed
     # + 1 is used since the first title always gets cut due to it being the searched title
-    inline_sorted_values = inline_dataframe.sort_values('distance')[:5 + 1]
+    inline_sorted_titles = inline_dataframe.sort_values('distance')[:5 + 1]
     sorted_titles = dataframe.sort_values('distance')[:amount_of_titles + 1]
 
     # Creates a list / array from the sorted titles
-    inline_list_of_titles = inline_sorted_values.values.tolist()
+    inline_list_of_titles = inline_sorted_titles.values.tolist()
     list_of_titles = sorted_titles.values.tolist()
 
     context = {
