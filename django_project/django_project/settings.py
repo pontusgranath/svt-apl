@@ -20,7 +20,7 @@ SECRET_KEY = ')5@!(p^2sy(3q@4lwfpgys!onh)rstawn-m7doh!2fr7sh40j)'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG_VALUE')
 
-ALLOWED_HOSTS = ['localhost']
+ALLOWED_HOSTS = ['localhost', 'svtdistancecalculator.herokuapp.com']
 
 
 # Application definition
