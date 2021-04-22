@@ -66,8 +66,12 @@ def calculate_distance(request):
     try:
         dataframe = pd.DataFrame([(c, distance(search, c)) for c in titles], columns=['title', 'distance'])
     except ValueError:
-        search = "Agenda"
-        dataframe = pd.DataFrame([(c, distance(search, c)) for c in titles], columns=['title', 'distance'])
+        context = {
+            'titles': titles,
+            'search': search,
+        }
+
+        return render(request, 'dist_search/404.html', context)
 
     try:
         amount_of_titles = int(request.GET.get('title-amount'))
@@ -97,3 +101,14 @@ def home(request):
     context = {'titles': titles}
 
     return render(request, 'dist_search/home.html', context)
+
+def handler404(request):
+    con = sqlite3.connect('db.sqlite3')
+    data = pd.read_sql('SELECT * FROM svt_statistics', con)
+    data.set_index('Client ID (ns_vid)', inplace=True)
+
+    titles = list(data.columns)
+
+    context = {'titles': titles}
+
+    return render(request, 'dist_search/404.html', context)
