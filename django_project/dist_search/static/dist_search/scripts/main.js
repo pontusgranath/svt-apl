@@ -1,3 +1,7 @@
+$(document).ready(function() {
+    $('[data-toggle="tooltip"]').tooltip()
+})
+
 // Scrolls down to selected title on pageload
 try {
     const queryString = window.location.search

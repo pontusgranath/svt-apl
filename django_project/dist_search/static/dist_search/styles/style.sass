@@ -8,6 +8,14 @@ $search-bar-border-width: 3px
 body
     background-color: #0B0C0D
 
+.tooltip-inner
+    background-color: $svt-green !important
+    color: #0B0C0D !important
+
+.tooltip.bs-tooltip-auto[x-placement^=bottom] .arrow::before, .tooltip.bs-tooltip-bottom .arrow::before
+    border-bottom-color: $svt-green !important
+    background-color: $svt-green !important
+
 h1
     color: $text-color
 
@@ -71,14 +79,9 @@ h1
 
 #title-amount
     transition: width .3s
-    width: 110px
+    width: 85px
     border: none
     border-left: 1px solid black
-
-    &:active, &:focus
-        outline: 0
-        transition: width .3s
-        width: 200px
 
 .form-control-lg
     border-radius: 0

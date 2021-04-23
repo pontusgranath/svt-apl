@@ -27,7 +27,7 @@
 		<div class="container d-flex justify-content-center align-items-center my-5">
 			<form action="calculate_distance" id="search-form" class="d-flex justify-content-center" method="GET">
 				<input type="text" list="shows" name="search-title" id="search-bar" class="form-control-lg" placeholder="Search for title">
-				<input type="number" name="title-amount" id="title-amount" class="form-control-lg" placeholder="Amount of titles" min=0 max=100>
+				<input type="number" name="title-amount" id="title-amount" class="form-control-lg" placeholder="5" min=0 max=100 data-toggle="tooltip" data-placement="bottom" title="Amount of titles to be displayed">
 				<button id="search-button" class="form-control-lg" type="submit"><i class="fas fa-search"></i></button>
 			</form>
 		</div>
@@ -46,7 +46,7 @@
 
 		<script src="https://kit.fontawesome.com/ee2129c6a0.js" crossorigin="anonymous"></script>
 		<script src="{% static 'dist_search/scripts/jquery-3.6.0.min.js' %}"></script>
-		<script src="{% static 'dist_search/scripts/bootstrap.min.js' %}"></script>
+		<script src="{% static 'dist_search/scripts/bootstrap.bundle.min.js' %}"></script>
 		<script src="{% static 'dist_search/scripts/main.js' %}"></script>
 	</body>
 </html>
