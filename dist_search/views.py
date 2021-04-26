@@ -4,11 +4,12 @@ import numpy as np
 import seaborn as sns
 from scipy.spatial.distance import pdist, squareform
 import json
-import sqlite3
+from sqlalchemy import create_engine
+from decouple import config
 
 def calculate_inline_distance(request):
     # Creates a connection to the database
-    con = sqlite3.connect('db.sqlite3')
+    con = create_engine('postgresql://'+ config('DB_USER') +':'+ config('DB_PASSWORD') +'@'+ config('DB_HOST') +':5432/'+ config('DB_NAME') +'')
     # Gets the table named svt_statistics from the database
     data = pd.read_sql('SELECT * FROM svt_statistics', con)
     data.set_index('Client ID (ns_vid)', inplace=True)
@@ -51,7 +52,7 @@ def calculate_inline_distance(request):
     return render(request, 'dist_search/home.html', context)
 
 def calculate_distance(request):
-    con = sqlite3.connect('db.sqlite3')
+    con = create_engine('postgresql://'+ config('DB_USER') +':'+ config('DB_PASSWORD') +'@'+ config('DB_HOST') +':5432/'+ config('DB_NAME') +'')
     data = pd.read_sql('SELECT * FROM svt_statistics', con)
     data.set_index('Client ID (ns_vid)', inplace=True)
 
@@ -88,7 +89,7 @@ def calculate_distance(request):
     return render(request, 'dist_search/home.html', context)
 
 def home(request):
-    con = sqlite3.connect('db.sqlite3')
+    con = create_engine('postgresql://'+ config('DB_USER') +':'+ config('DB_PASSWORD') +'@'+ config('DB_HOST') +':5432/'+ config('DB_NAME') +'')
     data = pd.read_sql('SELECT * FROM svt_statistics', con)
     data.set_index('Client ID (ns_vid)', inplace=True)
 
