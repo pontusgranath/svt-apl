@@ -57,7 +57,7 @@ def calculate_distance(request):
     data.set_index('Titles', inplace=True)
 
     # matrix = np.matrix(data)
-    # titles = list(data.columns)
+    titles = list(data.columns)
     # res = squareform(pdist(matrix, 'hamming'))
 
     # def distance(t1, t2):
@@ -65,7 +65,8 @@ def calculate_distance(request):
 
     search = request.GET.get('search-title')
     try:
-        dataframe = pd.DataFrame([(c, distance(search, c)) for c in titles], columns=['title', 'distance'])
+        # dataframe = pd.DataFrame([(c, distance(search, c)) for c in titles], columns=['title', 'distance'])
+        dataframe = data[['Agenda', search]]
     except ValueError:
         search = "Agenda"
         dataframe = pd.DataFrame([(c, distance(search, c)) for c in titles], columns=['title', 'distance'])
@@ -90,8 +91,8 @@ def calculate_distance(request):
 
 def home(request):
     con = create_engine('postgresql://'+ config('DB_USER') +':'+ config('DB_PASSWORD') +'@'+ config('DB_HOST') +':5432/'+ config('DB_NAME') +'')
-    data = pd.read_sql('SELECT * FROM svt_statistics', con)
-    data.set_index('Client ID (ns_vid)', inplace=True)
+    data = pd.read_sql('SELECT * FROM distance_table', con)
+    data.set_index('Titles', inplace=True)
 
     titles = list(data.columns)
 
