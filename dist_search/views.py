@@ -53,15 +53,15 @@ def calculate_inline_distance(request):
 
 def calculate_distance(request):
     con = create_engine('postgresql://'+ config('DB_USER') +':'+ config('DB_PASSWORD') +'@'+ config('DB_HOST') +':5432/'+ config('DB_NAME') +'')
-    data = pd.read_sql('SELECT * FROM svt_statistics', con)
-    data.set_index('Client ID (ns_vid)', inplace=True)
+    data = pd.read_sql('SELECT * FROM distance_table', con)
+    data.set_index('Titles', inplace=True)
 
-    matrix = np.matrix(data)
-    titles = list(data.columns)
-    res = squareform(pdist(matrix, 'hamming'))
+    # matrix = np.matrix(data)
+    # titles = list(data.columns)
+    # res = squareform(pdist(matrix, 'hamming'))
 
-    def distance(t1, t2):
-        return res[titles.index(t1), titles.index(t2)]
+    # def distance(t1, t2):
+    #     return res[titles.index(t1), titles.index(t2)]
 
     search = request.GET.get('search-title')
     try:
