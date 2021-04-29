@@ -32,10 +32,8 @@
 		</div>
 		{# Creates search results autofill #}
 		<datalist id="shows">
-			{% for show_title in titles %}
-
-                <option value="{{show_title}}"></option>
-
+			{% for show_title in titles|slice:"1:" %}
+				<option value="{{show_title}}"></option>
             {% endfor %}
 		</datalist>
 
