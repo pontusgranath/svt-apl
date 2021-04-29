@@ -3,52 +3,124 @@ import pandas as pd
 import numpy as np
 import seaborn as sns
 from scipy.spatial.distance import pdist, squareform
-from django.views.decorators.csrf import csrf_exempt
+import json
+import sqlite3
 
-def calculate_distance(request):
-    data = pd.read_csv('Data-Table 1.csv', sep=';')
+def calculate_inline_distance(request):
+    # Creates a connection to the database
+    con = sqlite3.connect('db.sqlite3')
+    # Gets the table named svt_statistics from the database
+    data = pd.read_sql('SELECT * FROM svt_statistics', con)
     data.set_index('Client ID (ns_vid)', inplace=True)
 
-    pd.set_option('display.max_columns', None)
-    pd.set_option('display.max_rows', None)
-
     matrix = np.matrix(data)
-    columns = list(data.columns)
+    titles = list(data.columns)
     res = squareform(pdist(matrix, 'hamming'))
 
+    # Calculates distance between 2 titles
     def distance(t1, t2):
-        return res[columns.index(t1), columns.index(t2)]
+        return res[titles.index(t1), titles.index(t2)]
 
-    search = request.POST.get('search-title')
-    try:
-        dataframe = pd.DataFrame([(c, distance(search, c)) for c in columns], columns=['title', 'distance'])
-    except ValueError:
-        search = "Agenda"
-        dataframe = pd.DataFrame([(c, distance(search, c)) for c in columns], columns=['title', 'distance'])
+    # Gets search result by fetching from the form
+    inline_search = request.GET.get('inline-search-title')
+    search = request.GET.get('search-title')
+    amount_of_titles = int(request.GET.get('title-amount'))
 
-    try:
-        amount_of_titles = int(request.POST.get('title-amount'))
-    except ValueError:
-        amount_of_titles = 5
+    # Uses search result to create a data table with its respective headers
+    inline_dataframe = pd.DataFrame([(c, distance(inline_search, c)) for c in titles], columns=['title', 'distance'])
+    dataframe = pd.DataFrame([(c, distance(search, c)) for c in titles], columns=['title', 'distance'])
 
-    sorted_values = dataframe.sort_values('distance')[:amount_of_titles + 1]
+    # Sorts titles and sets an upper limit on how many should be displayed
+    # + 1 is used since the first title always gets cut due to it being the searched title
+    inline_sorted_titles = inline_dataframe.sort_values('distance')[:5 + 1]
+    sorted_titles = dataframe.sort_values('distance')[:amount_of_titles + 1]
 
-    to_list = sorted_values.values.tolist()
+    # Creates a list / array from the sorted titles
+    inline_list_of_titles = inline_sorted_titles.values.tolist()
+    list_of_titles = sorted_titles.values.tolist()
 
     context = {
         'search': search,
-        'to_list': to_list,
-        'columns': columns,
+        'titles': titles,
+        'title_amount': amount_of_titles,
+        'list_of_titles': list_of_titles,
+        'inline_search': inline_search,
+        'inline_list_of_titles': inline_list_of_titles,
+    }
+
+    return render(request, 'dist_search/home.html', context)
+
+def calculate_distance(request):
+    con = sqlite3.connect('db.sqlite3')
+    data = pd.read_sql('SELECT * FROM svt_statistics', con)
+    data.set_index('Client ID (ns_vid)', inplace=True)
+
+    matrix = np.matrix(data)
+    titles = list(data.columns)
+    res = squareform(pdist(matrix, 'hamming'))
+
+    def distance(t1, t2):
+        return res[titles.index(t1), titles.index(t2)]
+
+    search = request.GET.get('search-title')
+    try:
+        dataframe = pd.DataFrame([(c, distance(search, c)) for c in titles], columns=['title', 'distance'])
+    except ValueError:
+        context = {
+            'titles': titles,
+            'search': search,
+        }
+
+        return render(request, '500.html', context)
+
+    try:
+        amount_of_titles = int(request.GET.get('title-amount'))
+    except ValueError:
+        # Default value is 5 if the field is left empty or invalid.
+        amount_of_titles = 5
+
+    sorted_titles = dataframe.sort_values('distance')[:amount_of_titles + 1]
+
+    list_of_titles = sorted_titles.values.tolist()
+
+    context = {
+        'titles': titles,
+        'search': search,
+        'title_amount': amount_of_titles,
+        'list_of_titles': list_of_titles,
     }
 
     return render(request, 'dist_search/home.html', context)
 
 def home(request):
-    data = pd.read_csv('Data-Table 1.csv', sep=';')
+    con = sqlite3.connect('db.sqlite3')
+    data = pd.read_sql('SELECT * FROM svt_statistics', con)
     data.set_index('Client ID (ns_vid)', inplace=True)
 
-    columns = list(data.columns)
+    titles = list(data.columns)
 
-    context = {'columns': columns}
+    context = {'titles': titles}
 
     return render(request, 'dist_search/home.html', context)
+
+def handler404(request, exception):
+    con = sqlite3.connect('db.sqlite3')
+    data = pd.read_sql('SELECT * FROM svt_statistics', con)
+    data.set_index('Client ID (ns_vid)', inplace=True)
+
+    titles = list(data.columns)
+
+    context = {'titles': titles}
+
+    return render(request, '404.html', context)
+
+def handler500(request):
+    con = sqlite3.connect('db.sqlite3')
+    data = pd.read_sql('SELECT * FROM svt_statistics', con)
+    data.set_index('Client ID (ns_vid)', inplace=True)
+
+    titles = list(data.columns)
+
+    context = {'titles': titles}
+
+    return render(request, '500.html', context)

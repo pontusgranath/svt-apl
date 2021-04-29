@@ -8,11 +8,27 @@ $search-bar-border-width: 3px
 body
     background-color: #0B0C0D
 
+.tooltip-inner
+    background-color: $svt-green !important
+    color: #0B0C0D !important
+
+.tooltip.bs-tooltip-auto[x-placement^=bottom] .arrow::before, .tooltip.bs-tooltip-bottom .arrow::before
+    border-bottom-color: $svt-green !important
+    background-color: $svt-green !important
+
 h1
     color: $text-color
 
+    a
+        color: $text-color
+        text-decoration: none
+
+        &:hover
+            color: $text-color
+
     span
         color: $svt-green
+
 
 #search-form
     border-color: $text-color
@@ -63,14 +79,9 @@ h1
 
 #title-amount
     transition: width .3s
-    width: 110px
+    width: 85px
     border: none
     border-left: 1px solid black
-
-    &:active, &:focus
-        outline: 0
-        transition: width .3s
-        width: 200px
 
 .form-control-lg
     border-radius: 0
@@ -86,7 +97,6 @@ h1
     min-width: 9.5rem
 
     border-radius: $search-bar-radius
-
 
     transition: border-width $distance-button-transition
 
@@ -105,68 +115,82 @@ h1
     display: flex
     flex-direction: column
 
-    h2
+    #search-results-text
         text-decoration: underline
         text-decoration-thickness: 2.5px
 
-    span
-        color: $svt-green
+        span
+            color: $svt-green
 
     li
         list-style: none
         position: relative
 
-        cursor: pointer
+.plus-button, .minus-button
+    color: $svt-green
+    background: none !important
+    border: none
+
+    &:hover, &:focus
+        border: none
+        outline: none
+        
 
 .distance-measurement
     display: inline
+    color: $svt-green
 
+    visibility: hidden
     opacity: 0%
-    transition: opacity .2s
-
-    &.show
-        opacity: 100%
-        transition: opacity .2s
-
-.inline-search-wrapper
-    position: fixed
-
-    height: 100%
-    width: 100%
-
-    background-color: #181b1d65
-    z-index: 99
-
-    top: 0
-    left: 0
-
-    cursor: pointer
-
-.inline-search-results
+    transition: visibility 0s, opacity .2s
     position: absolute
 
-    color: $text-color
-    background-color: #181b1d
-    
-    border-color: $svt-green
-    border-width: 2px
-    border-style: solid
+    &.show
+        position: relative
+        visibility: visible
+        opacity: 100%
+        transition: visibility 0s, opacity .2s
 
-    top: 50%
-    left: 50%
-    transform: translate(-50%, -50%)
+.inline_distance
+    color: $svt-green !important
 
+#back-to-top
+    position: fixed
+    right: 3%
+    bottom: 0
+
+    background-color: #0B0C0D
+    border: 2px solid $svt-green
+    border-bottom: none
+    border-bottom-right-radius: 0 !important
+    border-bottom-left-radius: 0 !important
+
+    color: white
+    text-decoration: none
+
+    font-size: calc(0.9rem + 1.5vw)
     z-index: 100
+    opacity: 0
+    transform: translateY(100px)
 
-    cursor: default
+    transition: all .5s ease
 
-    h3
+    &.show
+        opacity: 1
+        transform: translateY(0px)
+
+
+// ERROR PAGES
+
+#error-wrapper
+
+    p
+        color: $text-color
+        // font-size: 2.5rem
 
         span
             color: $svt-green
 
-    ul
-        list-style: none
-
-        li
-            font-size: 2rem
+    h2
+        font-size: 3rem
+        color: $text-color

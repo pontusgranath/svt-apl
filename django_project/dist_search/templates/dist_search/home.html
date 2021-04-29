@@ -1,60 +1,48 @@
+{% extends "dist_search/base.html" %}
+
 {% load sass_tags %}
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Searchbar</title>
-		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
-		<link rel="stylesheet" href="{% static "dist_search/styles/bootstrap.min.css" %}">
-		<link rel="stylesheet" href="{% sass_src "dist_search/styles/style.sass" %}">
-	</head>
-	<body>
-		<noscript>
-			<style>
-				#distance-button { display:none; }
+{% block content %}
 
-				ul li .distance-measurement {
-					display: inline;
-				}
+<ul id="search-results" class="container">
+	<!-- Generates search results -->
+	{% for list_title in list_of_titles|slice:"1:" %}
+		<!-- Creates search results header on first loop -->
+		{% if forloop.first %}
+			<div class="container d-flex justify-content-between align-items-center">
+				<h2 id="search-results-text" class="display-4">Search results for: <span>{{search}}</span></h2>
+				<button id="distance-button" class="button p-2">Display distance</button>
+			</div>
+		{% endif %}
 
-			</style>
-		</noscript>
-		<h1 class="text-center display-2 my-4">SVT-<span>APL</span> Searchbar for statistical analysis stuff</h1>
-		<div class="container d-flex justify-content-center align-items-center my-5">
-			<form action="calculate_distance" id="search-form" class="d-flex justify-content-center" method="POST">
-				{% csrf_token %}
-				<input type="text" list="shows" name="search-title" id="search-bar" class="form-control-lg" placeholder="Search for title">
-				<input type="number" name="title-amount" id="title-amount" class="form-control-lg" placeholder="Amount of titles" min=0 max=100>
-				<button id="search-button" class="form-control-lg" type="submit"><i class="fas fa-search"></i></button>
-			</form>
-		</div>
-		<datalist id="shows">
-			{% for show_title in columns %}
+		<span class="search-item-wrapper">
+			<li id="{{list_title.0}}" name="inline-search-title" class="list-title display-6 p-2" show-title="{{list_title.0}}">
+				<form class="d-inline" action="calculate_inline_distance" method="GET">
+					<input class="plus-button" type="submit" value="{% if list_title.0 == inline_search %}>{% else %}+{% endif %}">
+					<input type="hidden" name="inline-search-title" value="{{list_title.0}}"/>
+					<input type="hidden" name="search-title" value="{{search}}"/>
+					<input type="hidden" name="title-amount" value="{{title_amount}}">
+				</form>
+				{{list_title.0}} 
+				<span class="distance-measurement">
+					- {{list_title.1}}
+				</span>
+			</li>
+			<!-- Puts inline search results under correct title -->
+			{% if list_title.0 == inline_search %}
+				<ul>
+					{% for inline_list_title in inline_list_of_titles|slice:"1:" %}
+						<li class="text-light">{{inline_list_title.0}} - <span class="inline_distance">{{inline_list_title.1}}</span></li>
+					{% endfor %}
+				</ul>
+			{% endif %}
+		</span>
+	{% endfor %}
+</ul>
 
-                <option value="{{show_title}}"></option>
+<a id="back-to-top" href="#title" class="display-5 py-2 px-4 rounded-circle">
+	<i class="fas fa-chevron-up"></i>
+</a>
 
-            {% endfor %}
-		</datalist>
-
-		<ul id="search-results" class="container">
-			{% for list_title in to_list|slice:"1:" %}
-				{% if forloop.first %}
-					<div class="container d-flex justify-content-between align-items-center">
-						<h2 class="display-4">Search results for: <span>{{search}}<span></h2>
-						<button id="distance-button" class="button p-2">Display distance</button>
-					</div>
-				{% endif %}
-
-				<li name="inline-search-title" class="list-title display-5 p-2" close-titles="" close-distances="" show-title="{{list_title.0}}">{{list_title.0}}<span class="distance-measurement"> - {{list_title.1}}</span></li>
-            {% endfor %}
-		</ul>
-		
-		<script src="https://kit.fontawesome.com/ee2129c6a0.js" crossorigin="anonymous"></script>
-		<script src="{% static 'dist_search/scripts/jquery-3.6.0.min.js' %}"></script>
-		<script src="{% static 'dist_search/scripts/bootstrap.min.js' %}"></script>
-		<script src="{% static 'dist_search/scripts/main.js' %}"></script>
-	</body>
-</html>
+{% endblock content %}

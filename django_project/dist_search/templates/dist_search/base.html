@@ -1,0 +1,58 @@
+{% load sass_tags %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Searchbar</title>
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+		<link rel="stylesheet" href="{% static "dist_search/styles/bootstrap.min.css" %}">
+		<link rel="stylesheet" href="{% sass_src "dist_search/styles/style.sass" %}">
+	</head>
+	<body>
+		<noscript>
+			<style>
+				#distance-button { display:none; }
+
+				ul li .distance-measurement {
+					visibility: visible;
+					opacity: 100%;
+					position: relative;
+				}
+
+				#back-to-top {
+					opacity: 1 !important;
+					transform: translateY(0px) !important;
+				}
+			</style>
+		</noscript>
+
+		<h1 id="title" class="text-center display-2 my-4"><a href="/">SVT-<span>APL</span> Searchbar for statistical analysis stuff</a></h1>
+		<div class="container d-flex justify-content-center align-items-center my-5">
+			<form action="calculate_distance" id="search-form" class="d-flex justify-content-center" method="GET">
+				<input type="text" list="shows" name="search-title" id="search-bar" class="form-control-lg" placeholder="Search for title">
+				<input type="number" name="title-amount" id="title-amount" class="form-control-lg" placeholder="5" min=0 max=100 data-toggle="tooltip" data-placement="bottom" title="Amount of titles to be displayed">
+				<button id="search-button" class="form-control-lg" type="submit"><i class="fas fa-search"></i></button>
+			</form>
+		</div>
+		<!-- Creates search results autofill -->
+		<datalist id="shows">
+			{% for show_title in titles %}
+
+                <option value="{{show_title}}"></option>
+
+            {% endfor %}
+		</datalist>
+
+        {% block content %}
+        
+        {% endblock %}
+
+		<script src="https://kit.fontawesome.com/ee2129c6a0.js" crossorigin="anonymous"></script>
+		<script src="{% static 'dist_search/scripts/jquery-3.6.0.min.js' %}"></script>
+		<script src="{% static 'dist_search/scripts/bootstrap.bundle.min.js' %}"></script>
+		<script src="{% static 'dist_search/scripts/main.js' %}"></script>
+	</body>
+</html>

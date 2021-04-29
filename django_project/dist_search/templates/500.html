@@ -1,0 +1,17 @@
+{% extends "dist_search/base.html" %}
+
+{% load sass_tags %}
+{% load static %}
+
+{% block content %}
+
+<div id="error-wrapper" class="container text-left">
+    <h2 class="font-weight-bold">500 - Server Error</h2>
+
+    {% if search %}
+        <p class="display-6"><span>{{ search }}</span> is not a valid title, please re-check your spelling and try again</p>
+    {% endif %}
+    
+</div>
+
+{% endblock content %}

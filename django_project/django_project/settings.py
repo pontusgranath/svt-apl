@@ -5,6 +5,7 @@ Django settings for django_project project.
 
 from pathlib import Path
 import os
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -17,7 +18,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = ')5@!(p^2sy(3q@4lwfpgys!onh)rstawn-m7doh!2fr7sh40j)'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG_VALUE')
 
 ALLOWED_HOSTS = ['localhost']
 
