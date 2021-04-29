@@ -159,6 +159,7 @@ h1
     right: 3%
     bottom: 0
 
+    background-color: #0B0C0D
     border: 2px solid $svt-green
     border-bottom: none
     border-bottom-right-radius: 0 !important
@@ -168,6 +169,16 @@ h1
     text-decoration: none
 
     font-size: calc(0.9rem + 1.5vw)
+    z-index: 100
+    opacity: 0
+    transform: translateY(100px)
+
+    transition: all .5s ease
+
+    &.show
+        opacity: 1
+        transform: translateY(0px)
+
 
 // ERROR PAGES
 
