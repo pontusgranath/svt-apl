@@ -101,13 +101,3 @@ def handler404(request, exception):
     context = {'titles': titles}
 
     return render(request, '404.html', context)
-
-def handler500(request):
-    con = create_engine('postgresql://'+ config('DB_USER') +':'+ config('DB_PASSWORD') +'@'+ config('DB_HOST') +':5432/'+ config('DB_NAME') +'')
-    data = pd.read_sql('SELECT * FROM distance_table', con)
-
-    titles = list(data.columns)
-
-    context = {'titles': titles}
-
-    return render(request, '500.html', context)

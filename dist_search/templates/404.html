@@ -7,7 +7,14 @@
 
 <div id="error-wrapper" class="container text-left">
     <h2 class="font-weight-bold">404 - Not Found</h2>
-    <p class="display-6">The page you were looking for doesn't exist or have been deleted</p>
+    
+
+    {% if search %}
+        <p class="display-6"><span>{{ search }}</span> is not a valid title, please re-check your spelling and try again</p>
+    {% else %}
+        <p class="display-6">The page you were looking for doesn't exist or have been deleted</p>
+    {% endif %}
+
 </div>
 
 {% endblock content %}
