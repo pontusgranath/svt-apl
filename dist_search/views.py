@@ -61,7 +61,7 @@ def calculate_distance(request):
             'search': search,
         }
 
-        return render(request, '500.html', context)
+        return render(request, '404.html', context)
 
     try:
         amount_of_titles = int(request.GET.get('title-amount'))
