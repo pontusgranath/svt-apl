@@ -59,9 +59,10 @@ def calculate_distance(request):
         context = {
             'titles': titles,
             'search': search,
+            'error': ' ',
         }
 
-        return render(request, '404.html', context)
+        return render(request, 'dist_search/home.html', context)
 
     try:
         amount_of_titles = int(request.GET.get('title-amount'))
