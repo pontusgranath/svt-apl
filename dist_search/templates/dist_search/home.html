@@ -7,7 +7,7 @@
 
 <ul id="search-results" class="container">
 	{% if error %}
-		<p class="display-6"><span>{{ search }}</span> is not a valid title, please re-check your spelling and try again</p>
+		<p id="error-text" class="display-6"><span>{{ search }}</span> is not a valid title, please re-check your spelling and try again</p>
 	{% else %}
 		<!-- Generates search results -->
 		{% for list_title in list_of_titles|slice:"1:" %}

@@ -55,10 +55,9 @@ def calculate_distance(request):
     
     try:
         dataframe = data.filter(['Titles', search], axis=1)
-    except ValueError:
+    except:
         context = {
             'titles': titles,
-            'search': search,
             'error': ' ',
         }
 
@@ -70,7 +69,16 @@ def calculate_distance(request):
         # Default value is 5 if the field is left empty or invalid.
         amount_of_titles = 5
 
-    sorted_titles = dataframe.sort_values(search)[:amount_of_titles + 1]
+    try:
+        sorted_titles = dataframe.sort_values(search)[:amount_of_titles + 1]
+    except:
+        context = {
+            'titles': titles,
+            'search': search,
+            'error': ' ',
+        }
+
+        return render(request, 'dist_search/home.html', context)
 
     list_of_titles = sorted_titles.values.tolist()
 
