@@ -37,9 +37,9 @@
 				<button id="search-button" class="form-control-lg" type="submit"><i class="fas fa-search"></i></button>
 			</form>
 		</div>
-		<!-- Creates search results autofill -->
+		{# Creates search results autofill #}
 		<datalist id="shows">
-			{% for show_title in titles %}
+			{% for show_title in titles|slice:"1:" %}
 
                 <option value="{{show_title}}"></option>
 

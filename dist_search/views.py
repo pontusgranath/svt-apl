@@ -55,13 +55,13 @@ def calculate_distance(request):
     
     try:
         dataframe = data.filter(['Titles', search], axis=1)
-    except ValueError:
+    except:
         context = {
             'titles': titles,
-            'search': search,
+            'error': ' ',
         }
 
-        return render(request, '500.html', context)
+        return render(request, 'dist_search/home.html', context)
 
     try:
         amount_of_titles = int(request.GET.get('title-amount'))
@@ -69,7 +69,16 @@ def calculate_distance(request):
         # Default value is 5 if the field is left empty or invalid.
         amount_of_titles = 5
 
-    sorted_titles = dataframe.sort_values(search)[:amount_of_titles + 1]
+    try:
+        sorted_titles = dataframe.sort_values(search)[:amount_of_titles + 1]
+    except:
+        context = {
+            'titles': titles,
+            'search': search,
+            'error': ' ',
+        }
+
+        return render(request, 'dist_search/home.html', context)
 
     list_of_titles = sorted_titles.values.tolist()
 
@@ -93,23 +102,11 @@ def home(request):
     return render(request, 'dist_search/home.html', context)
 
 def handler404(request, exception):
-    con = sqlite3.connect('db.sqlite3')
-    data = pd.read_sql('SELECT * FROM svt_statistics', con)
-    data.set_index('Client ID (ns_vid)', inplace=True)
+    con = create_engine('postgresql://'+ config('DB_USER') +':'+ config('DB_PASSWORD') +'@'+ config('DB_HOST') +':5432/'+ config('DB_NAME') +'')
+    data = pd.read_sql('SELECT * FROM distance_table', con)
 
     titles = list(data.columns)
 
     context = {'titles': titles}
 
     return render(request, '404.html', context)
-
-def handler500(request):
-    con = sqlite3.connect('db.sqlite3')
-    data = pd.read_sql('SELECT * FROM svt_statistics', con)
-    data.set_index('Client ID (ns_vid)', inplace=True)
-
-    titles = list(data.columns)
-
-    context = {'titles': titles}
-
-    return render(request, '500.html', context)
