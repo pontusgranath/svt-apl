@@ -2,7 +2,7 @@ import unittest
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 
-class Title(unittest.TestCase):
+class AmountOfTitles(unittest.TestCase):
     
     def setUp(self):
         self.driver = webdriver.Chrome()
