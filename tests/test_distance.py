@@ -62,6 +62,28 @@ class Distance(unittest.TestCase):
             index += 1
             print("Item", index, "is visible!")
 
+    def test_correct_distance_results(self):
+        driver = self.driver
+        driver.get("http://localhost:8000")
+
+        def compareDistance(title, expectedList):
+            searchField = driver.find_element_by_name('search-title')
+            searchField.send_keys(title)
+            searchField.send_keys(Keys.RETURN)
+
+            distanceButton = driver.find_element_by_id('distance-button')
+            distanceButton.click()
+
+            searchResults = [element.text for element in driver.find_elements_by_class_name("distance-measurement")]
+            searchResults = [i.split('- ', 1)[1] for i in searchResults]
+            expectedResults = expectedList
+
+            self.assertListEqual(expectedResults, searchResults)
+
+        compareDistance('Klipp/simc', ['0.16', '0.2', '0.21', '0.22', '0.22'])
+        compareDistance('Bang', ['0.25', '0.27', '0.27', '0.28', '0.29'])
+        compareDistance('Leif och Billy', ['0.15', '0.17', '0.17', '0.19', '0.19'])
+
     def tearDown(self):
         self.driver.close()
 
