@@ -18,8 +18,8 @@ class Title(unittest.TestCase):
         driver = self.driver
         driver.get("http://localhost:8000")
 
-        title_text = driver.find_element_by_id('title').text
-        self.assertIn('SVT-APL Searchbar for statistical analysis stuff', title_text)
+        titleText = driver.find_element_by_id('title').text
+        self.assertIn('SVT-APL Searchbar for statistical analysis stuff', titleText)
 
     def tearDown(self):
         self.driver.close()
