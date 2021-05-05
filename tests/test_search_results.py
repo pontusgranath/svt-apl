@@ -21,7 +21,7 @@ class Title(unittest.TestCase):
 
         self.assertEqual(5, len(titles))
 
-    # Tests so the correct amount of titles is displayed
+    # Tests so the correct amount of titles is displayed when amount search field is used
     def test_correct_amount_of_titles(self):
         driver = self.driver
         driver.get("http://localhost:8000")
