@@ -60,7 +60,9 @@ class AmountOfTitles(unittest.TestCase):
 
             self.assertEqual(expectedResults, searchResults)
 
+        compareResults("Klipp/simc", ['Come home', 'Folkhälsomyndigheten om covid-19', 'Bolibompa: Drakens trädgård', 'Skidskytte: VM', 'Melodifestivalen 2020: Deltävling 3'])
         compareResults("Bang", ['Eagles', 'The Split', 'Come home', 'World on fire', 'Skidskytte: VM'])
+        compareResults("Leif och Billy", ['Folkhälsomyndigheten om covid-19', 'Kalifat', 'Pippi Långstrump', 'Melodifestivalen 2020: Deltävling 3', 'På spåret'])
 
     def tearDown(self):
         self.driver.close()
