@@ -46,6 +46,22 @@ class AmountOfTitles(unittest.TestCase):
         checkAmountOfTitles("0" ,"World on fire")
         checkAmountOfTitles("68" ,"DNA")
 
+    def test_correct_search_results(self):
+        driver = self.driver
+        driver.get("http://localhost:8000")
+
+        def compareResults(title, expectedList):
+            searchField = driver.find_element_by_name('search-title')
+            searchField.send_keys(title)
+            searchField.send_keys(Keys.RETURN)
+
+            searchResults = [element.text for element in driver.find_elements_by_class_name("list-title")]
+            expectedResults = expectedList
+
+            self.assertEqual(expectedResults, searchResults)
+
+        compareResults("Bang", ['Eagles', 'The Split', 'Come home', 'World on fire', 'Skidskytte: VM'])
+
     def tearDown(self):
         self.driver.close()
 
