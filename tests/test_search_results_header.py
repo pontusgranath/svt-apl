@@ -25,7 +25,7 @@ class SearchResultsHeader(unittest.TestCase):
         driver = self.driver
         driver.get("http://localhost:8000")
 
-        def assert_header_text(title):
+        def assertHeaderText(title):
             searchField = driver.find_element_by_name('search-title')
             searchField.send_keys(title)
             searchField.send_keys(Keys.RETURN)
@@ -36,10 +36,10 @@ class SearchResultsHeader(unittest.TestCase):
 
             print(title, "found!")
 
-        assert_header_text("Agenda")
-        assert_header_text("Kulturnyheterna")
-        assert_header_text("Klipp/simc")
-        assert_header_text("World on fire")
+        assertHeaderText("Agenda")
+        assertHeaderText("Kulturnyheterna")
+        assertHeaderText("Klipp/simc")
+        assertHeaderText("World on fire")
 
     def tearDown(self):
         self.driver.close()
