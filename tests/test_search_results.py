@@ -7,10 +7,44 @@ class Title(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.Chrome()
         
-    # What the test does
-    def test_name(self):
+    # Tests so the default amount of titles is correct
+    def test_default_amount_of_titles(self):
         driver = self.driver
-        driver.get("http://localhost:8000")        
+        driver.get("http://localhost:8000")
+
+        searchField = driver.find_element_by_name('search-title')
+        searchField.send_keys('Klipp/simc')
+
+        searchField.send_keys(Keys.RETURN)
+
+        titles = driver.find_elements_by_class_name('list-title')
+
+        self.assertEqual(5, len(titles))
+
+    # Tests so the correct amount of titles is displayed
+    def test_correct_amount_of_titles(self):
+        driver = self.driver
+        driver.get("http://localhost:8000")
+
+        def checkAmountOfTitles(amount, title):
+            searchField = driver.find_element_by_name('search-title')
+            searchAmountField = driver.find_element_by_name('title-amount')
+
+            searchField.send_keys(title)
+            searchAmountField.send_keys(amount)
+
+            searchAmountField.send_keys(Keys.RETURN)
+
+            titles = driver.find_elements_by_class_name('list-title')
+
+            self.assertEqual(int(amount), len(titles))
+
+        checkAmountOfTitles("3" ,"Klipp/simc")
+        checkAmountOfTitles("99" ,"Klipp/simc")
+        checkAmountOfTitles("99" ,"Agenda")
+        checkAmountOfTitles("1" ,"Agenda")
+        checkAmountOfTitles("0" ,"World on fire")
+        checkAmountOfTitles("68" ,"DNA")
 
     def tearDown(self):
         self.driver.close()
