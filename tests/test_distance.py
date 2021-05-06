@@ -66,7 +66,7 @@ class Distance(unittest.TestCase):
         driver = self.driver
         driver.get("http://localhost:8000")
 
-        def compareDistance(title, expectedList):
+        def compareDistance(title, expectedResults):
             searchField = driver.find_element_by_name('search-title')
             searchField.send_keys(title)
             searchField.send_keys(Keys.RETURN)
@@ -76,7 +76,6 @@ class Distance(unittest.TestCase):
 
             searchResults = [element.text for element in driver.find_elements_by_class_name("distance-measurement")]
             searchResults = [i.split('- ', 1)[1] for i in searchResults]
-            expectedResults = expectedList
 
             self.assertListEqual(expectedResults, searchResults)
 
