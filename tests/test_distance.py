@@ -31,6 +31,8 @@ class Distance(unittest.TestCase):
         self.assertIn("Display distance", distanceButton.text)
         print("Third assertion finished!")
 
+
+    # Tests if the text in distance-button changes before and after click
     def test_distance_button_toggle_distance(self):
         driver = self.driver
         driver.get("http://localhost:8000")
@@ -62,6 +64,8 @@ class Distance(unittest.TestCase):
             index += 1
             print("Item", index, "is visible!")
 
+    
+    # Tests if the correct distance-measurements are being displayed
     def test_correct_distance_results(self):
         driver = self.driver
         driver.get("http://localhost:8000")
