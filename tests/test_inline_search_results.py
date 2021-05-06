@@ -3,7 +3,7 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import time
 
-class SearchResultsHeader(unittest.TestCase):
+class InlineSearchResults(unittest.TestCase):
     
     def setUp(self):
         self.driver = webdriver.Chrome()
