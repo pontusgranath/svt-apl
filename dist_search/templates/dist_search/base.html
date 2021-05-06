@@ -11,7 +11,7 @@
 		<link rel="stylesheet" href="{% static "dist_search/styles/bootstrap.min.css" %}">
 		<link rel="stylesheet" href="{% sass_src "dist_search/styles/style.sass" %}">
 	</head>
-	<body>
+	<body id="body">
 		<noscript>
 			<style>
 				#distance-button { display:none; }
@@ -29,7 +29,7 @@
 			</style>
 		</noscript>
 
-		<h1 id="title" class="text-center display-2 my-4"><a href="/">SVT-<span>APL</span> Searchbar for statistical analysis stuff</a></h1>
+		<h1 id="title" class="text-center display-2 pt-4"><a href="/">SVT-<span>APL</span> Searchbar for statistical analysis stuff</a></h1>
 		<div class="container d-flex justify-content-center align-items-center my-5">
 			<form action="calculate_distance" id="search-form" class="d-flex justify-content-center" method="GET">
 				<input type="text" list="shows" name="search-title" id="search-bar" class="form-control-lg" placeholder="Search for title">
