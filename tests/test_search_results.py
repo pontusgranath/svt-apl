@@ -13,6 +13,10 @@ class SearchResults(unittest.TestCase):
         driver.get("http://localhost:8000")
 
         searchField = driver.find_element_by_name('search-title')
+        searchField.clear()
+        searchAmountField = driver.find_element_by_name('title-amount')
+        searchAmountField.clear()
+
         searchField.send_keys('Klipp/simc')
 
         searchField.send_keys(Keys.RETURN)
@@ -28,7 +32,9 @@ class SearchResults(unittest.TestCase):
 
         def checkAmountOfTitles(amount, title):
             searchField = driver.find_element_by_name('search-title')
+            searchField.clear()
             searchAmountField = driver.find_element_by_name('title-amount')
+            searchAmountField.clear()
 
             searchField.send_keys(title)
             searchAmountField.send_keys(amount)
@@ -54,6 +60,10 @@ class SearchResults(unittest.TestCase):
 
         def compareResults(title, expectedResults):
             searchField = driver.find_element_by_name('search-title')
+            searchField.clear()
+            searchAmountField = driver.find_element_by_name('title-amount')
+            searchAmountField.clear()
+
             searchField.send_keys(title)
             searchField.send_keys(Keys.RETURN)
 

@@ -15,6 +15,10 @@ class InlineSearchResults(unittest.TestCase):
 
         def CompareResults(title, amount, expectedResults):
             searchField = driver.find_element_by_name('search-title')
+            searchField.clear()
+            searchAmountField = driver.find_element_by_name('title-amount')
+            searchAmountField.clear()
+            
             searchField.send_keys(title)
             searchField.send_keys(Keys.RETURN)
 
@@ -38,6 +42,10 @@ class InlineSearchResults(unittest.TestCase):
 
         def compareDistance(title, amount, expectedResults):
             searchField = driver.find_element_by_name('search-title')
+            searchField.clear()
+            searchAmountField = driver.find_element_by_name('title-amount')
+            searchAmountField.clear()
+            
             searchField.send_keys(title)
             searchField.send_keys(Keys.RETURN)
 

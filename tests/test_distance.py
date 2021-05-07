@@ -13,6 +13,10 @@ class Distance(unittest.TestCase):
         driver.get("http://localhost:8000")
 
         searchField = driver.find_element_by_name('search-title')
+        searchField.clear()
+        searchAmountField = driver.find_element_by_name('title-amount')
+        searchAmountField.clear()
+
         searchField.send_keys("Klipp/simc")
         searchField.send_keys(Keys.RETURN)
 
@@ -38,6 +42,10 @@ class Distance(unittest.TestCase):
         driver.get("http://localhost:8000")
 
         searchField = driver.find_element_by_name('search-title')
+        searchField.clear()
+        searchAmountField = driver.find_element_by_name('title-amount')
+        searchAmountField.clear()
+
         searchField.send_keys("Klipp/simc")
         searchField.send_keys(Keys.RETURN)
 
@@ -72,6 +80,10 @@ class Distance(unittest.TestCase):
 
         def compareDistance(title, expectedResults):
             searchField = driver.find_element_by_name('search-title')
+            searchField.clear()
+            searchAmountField = driver.find_element_by_name('title-amount')
+            searchAmountField.clear()
+            
             searchField.send_keys(title)
             searchField.send_keys(Keys.RETURN)
 
